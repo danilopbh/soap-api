@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Message>
+   <MessageId>
+      <ServiceId>IncRetCDA</ServiceId>
+      <Version>1.0</Version>
+      <MsgDesc>Inclusao de CDAS</MsgDesc>
+      <Code>2151172</Code>
+      <FromAddress>SIATU</FromAddress>
+      <ToAddress>PGMBHE</ToAddress>
+      <Date>20220909</Date>
+   </MessageId>
+   <MessageBody>
+      <CDA>
+   <tpevento>1</tpevento>
+   <idcda>2087921</idcda>
+   <situacao_cda>1</situacao_cda>
+   <tipo_origem_cda>1</tipo_origem_cda>
+   <registro_numero>20950334375033</registro_numero>
+   <registro_livro>4375</registro_livro>
+   <registro_folha>033</registro_folha>
+   <termo_inscricao_numero>20215437599</termo_inscricao_numero>
+   <termo_inscricao_data>27/07/2021</termo_inscricao_data>
+   <contribuinte>
+      <nome>GESTAO E OPERACAO DE VIAGENS S.A</nome>
+      <cpf_cnpj>09.306896/0001-06</cpf_cnpj>
+      <identificador>04355380016</identificador>
+      <endereco>RUA DA BAHIA, 1032 - SALA 301 - CENTRO - 30160-011 - BELO HORIZONTE - MG</endereco>
+   <tipo_Logradouro>RUA</tipo_Logradouro>
+   <descricao_Logradouro>DA BAHIA</descricao_Logradouro>
+   <numero_residencia>1032</numero_residencia>
+   <complemento>SALA 301</complemento>
+   <bairro>CENTRO</bairro>
+   <cep>30160011</cep>
+   <municipio>BELO HORIZONTE</municipio>
+   <uf>MG</uf>
+      <endereco_correspondencia>RUA PENAFIEL, 210 - ANCHIETA - 30310-420 - BELO HORIZONTE - MG</endereco_correspondencia>
+   <tipo_Logradouro_correspondencia>RUA</tipo_Logradouro_correspondencia>
+   <descricao_Logradouro_correspondencia>PENAFIEL</descricao_Logradouro_correspondencia>
+   <numero_residencia_correspondencia>210</numero_residencia_correspondencia>
+   <complemento_correspondencia> </complemento_correspondencia>
+   <Bairro_correspondencia>ANCHIETA</Bairro_correspondencia>
+   <CEP_correspondencia>30310420</CEP_correspondencia>
+   <Municipio_correspondencia>BELO HORIZONTE</Municipio_correspondencia>
+   <UF_correspondencia>MG</UF_correspondencia>
+      <lista_corresponsavel>
+         <corresponsavel>
+            <nome_corresponsavel>VINICIUS MOREIRA SANTOLIA</nome_corresponsavel>
+            <endereco_corresponsavel>RUA DAS CABIUNAS 22   BOM DESTINO SANTA LUZIA/MG 33060000</endereco_corresponsavel>
+   <tipo_Logradouro_corresponsavel>RUA</tipo_Logradouro_corresponsavel>
+   <descricao_Logradouro_corresponsavel>DA BAHIA</descricao_Logradouro_corresponsavel>
+   <numero_residencia_corresponsavel>1032  </numero_residencia_corresponsavel>
+   <complemento_corresponsavel>  SALA 301  </complemento_corresponsavel>
+   <Bairro_corresponsavel>CENTRO</Bairro_corresponsavel>
+   <CEP_corresponsavel>30160011</CEP_corresponsavel>
+   <Municipio_corresponsavel>BELO HORIZONTE</Municipio_corresponsavel>
+   <UF_corresponsavel>MG</UF_corresponsavel>
+            <cpf_cnpj_corresponsavel>03486792628</cpf_cnpj_corresponsavel>
+         </corresponsavel>
+         <corresponsavel>
+            <nome_corresponsavel>EDUARDO CAMPOS VASCONCELLOS</nome_corresponsavel>
+            <endereco_corresponsavel>RUA DAS CABIUNAS 22   BOM DESTINO SANTA LUZIA/MG 33060000</endereco_corresponsavel>
+   <tipo_Logradouro_corresponsavel>RUA</tipo_Logradouro_corresponsavel>
+   <descricao_Logradouro_corresponsavel>DA BAHIA</descricao_Logradouro_corresponsavel>
+   <numero_residencia_corresponsavel>1032  </numero_residencia_corresponsavel>
+   <complemento_corresponsavel>  SALA 301  </complemento_corresponsavel>
+   <Bairro_corresponsavel>CENTRO</Bairro_corresponsavel>
+   <CEP_corresponsavel>30160011</CEP_corresponsavel>
+   <Municipio_corresponsavel>BELO HORIZONTE</Municipio_corresponsavel>
+   <UF_corresponsavel>MG</UF_corresponsavel>
+            <cpf_cnpj_corresponsavel>04305659689</cpf_cnpj_corresponsavel>
+         </corresponsavel>
+         <corresponsavel>
+            <nome_corresponsavel>LUCIANO HENRIQUE BRANDAO DE MIRANDA</nome_corresponsavel>
+            <endereco_corresponsavel>RUA DAS CABIUNAS 22   BOM DESTINO SANTA LUZIA/MG 33060000</endereco_corresponsavel>
+   <tipo_Logradouro_corresponsavel>RUA</tipo_Logradouro_corresponsavel>
+   <descricao_Logradouro_corresponsavel>DA BAHIA</descricao_Logradouro_corresponsavel>
+   <numero_residencia_corresponsavel>1032  </numero_residencia_corresponsavel>
+   <complemento_corresponsavel>  SALA 301  </complemento_corresponsavel>
+   <Bairro_corresponsavel>CENTRO</Bairro_corresponsavel>
+   <CEP_corresponsavel>30160011</CEP_corresponsavel>
+   <Municipio_corresponsavel>BELO HORIZONTE</Municipio_corresponsavel>
+   <UF_corresponsavel>MG</UF_corresponsavel>
+            <cpf_cnpj_corresponsavel>06306473645</cpf_cnpj_corresponsavel>
+         </corresponsavel>
+      </lista_corresponsavel>
+   </contribuinte>
+      <lista_divida>
+   <divida>
+      <codigo_lancamento>1361521047523A</codigo_lancamento>
+      <codigo_secretaria>13</codigo_secretaria>
+      <secretaria>SMFA</secretaria>
+      <codigo_tipo_divida>615</codigo_tipo_divida>
+      <tipo_divida>TVFRFON2</tipo_divida>
+      <exercicio>2021</exercicio>
+      <numero>047523A</numero>
+      <processo>01.020451-21/98</processo>
+      <data_fato_gerador>vide verso</data_fato_gerador>
+      <modalidade_notificacao>DecortBH</modalidade_notificacao>
+      <data_notificacao>20/04/2021</data_notificacao>
+      <endereco_fato_gerador>RUA DA BAHIA, 1032 - SALA 301 - CENTRO - 30160-011 - BELO HORIZONTE - MG</endereco_fato_gerador>
+   <tipo_Logradouro_fato_gerador>RUA</tipo_Logradouro_fato_gerador>
+   <descricao_Logradouro_fato_gerador>DA BAHIA</descricao_Logradouro_fato_gerador>
+   <numero_residencia_fato_gerador>1032  </numero_residencia_fato_gerador>
+   <complemento_fato_gerador>  SALA 301  </complemento_fato_gerador>
+   <Bairro_fato_gerador>CENTRO</Bairro_fato_gerador>
+   <CEP_fato_gerador>30160011</CEP_fato_gerador>
+   <Municipio_fato_gerador>BELO HORIZONTE</Municipio_fato_gerador>
+   <UF_fato_gerador>MG</UF_fato_gerador>
+      <origem_divida>615 - TERMO VERIFICACAO FISCAL-RETENCAO NA FONTE - DOBRO&#92;&#13;&#10;</origem_divida>
+      <data_calculo>09/09/2022</data_calculo>
+      <lista_demonstrativo>
+         <demonstrativo>
+            <id_sigla>615</id_sigla>
+            <sigla>TVFRFON2</sigla>
+            <descricao>TERMO VERIFICACAO FISCAL-RETENCAO NA FONTE - DOBRO</descricao>
+            <valor_original>18556,28</valor_original>
+            <correcao_data>21/05/2021</correcao_data>
+            <correcao_indice>IPCA&#95;E</correcao_indice>
+            <correcao_valor>3620,70</correcao_valor>
+            <multa_data>21/05/2021</multa_data>
+            <multa_perc>140</multa_perc>
+            <multa_valor>31047,76</multa_valor>
+            <juros_data></juros_data>            <juros_indice>0</juros_indice>
+            <juros_valor>7244,38</juros_valor>
+            <selic_data>01/01/2022</selic_data>
+            <selic_perc>8,49</selic_perc>
+            <selic_valor>1882,86</selic_valor>
+            <Total>62351,98</Total>
+         </demonstrativo>
+         <demonstrativo_total>
+            <total_detalhe>TOTAL</total_detalhe>
+            <correcao_valor_total>3620,70</correcao_valor_total>
+            <multa_valor_total>31047,76</multa_valor_total>
+            <juros_valor_total>7244,38</juros_valor_total>
+            <selic_valor_total>1882,86</selic_valor_total>
+            <total>62351,98</total>
+         </demonstrativo_total>
+      </lista_demonstrativo>
+      <lista_suspensao>
+         <suspensao> <lancamento></lancamento><tipo></tipo><processo></processo><data_inicio></data_inicio><data_fim></data_fim></suspensao>
+      </lista_suspensao>
+      <fundamentacao_legal>ISSQN DEVIDO POR PESSOA JURIDICA (RETENCAO NA FONTE) - FALTA DE RECOLHIMENTO - Exigencia: Lei 5839/90 arts 1 e 2; Lei 8725/03 arts. 1, 3 a &#13;&#10;11, 13 a 28; Multa, juros e atualizacao monetaria: Lei 5641/89 art 126; Lei 6480/93 art 1; Lei 7378/97 arts 1, 3, 4 a 6 e 8 a 12A; Lei 8147/&#13;&#10;00 art 14; Vencimento: Decreto 11956/05 art 4 a 13                                                                                          &#13;&#10; JUROS:LEI 5641/89, ART.126,INCISO I; LEI 6480/93, ART.PRIMEIRO.                                                                            &#13;&#10;                                                                                                                                            &#13;&#10; ISSQN DEVIDO POR PESSOA JURIDICA (RETENCAO NA FONTE)-RECEITA DECLARADA A MENOR - Exigencia: Lei 5839/90 arts 1 e 2; Lei 8725/03 arts. 1, 3 &#13;&#10;a 11, 13 a 28; Multa, juros e atualizacao monetaria: Lei 5641/89 art 126; Lei 6480/93 art 1; Lei 7378/97 arts 1, 3, 4 a 6 e 8 a 12A; Lei 814&#13;&#10;7/00 art 14; Vencimento: Decreto 11956/05 art 4 a 13                                                                                        &#13;&#10; JUROS:LEI 5641/89, ART.126,INCISO I; LEI 6480/93, ART.PRIMEIRO.                                                                            &#13;&#10;                                                                                                                                            &#13;&#10; JUROS:LEI 5641/89, ART.126,INCISO I; LEI 6480/93, ART.PRIMEIRO.                                                                            &#13;&#10;                                                                                                                                            &#13;&#10; CORRECAO MONETARIA CONFORME CORRECAO PELO IPCA-E CONFORME ART 14 PARAG. 1. DA LEI MUNICIPAL 8147/2000. E                                   &#13;&#10; A PARTIR DE 01/01/2022 INCIDENCIA DA SELIC, CONFORME ART. 13 DA LEI 11.315/2021 E DECRETO 17.840/2021.&#13;&#10;</fundamentacao_legal>
+      <observacao>TERMO VERIFICAC&#63;O: 047523A                                                                                                                  &#13;&#10;3A04752311067570 0000001PR1106757 000000&#13;&#10;</observacao>
+      <lista_referencias>
+         <referencia>
+            <natureza>ISSQN-RF84</natureza>
+            <data_referencia>01/03/2020</data_referencia>
+            <correcao>01/03/2020</correcao>
+            <juros>01/03/2020</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>7887,31</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF84</natureza>
+            <data_referencia>01/04/2020</data_referencia>
+            <correcao>01/04/2020</correcao>
+            <juros>01/04/2020</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>4659,57</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF84</natureza>
+            <data_referencia>01/05/2020</data_referencia>
+            <correcao>01/05/2020</correcao>
+            <juros>01/05/2020</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>260,21</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/04/2016</data_referencia>
+            <correcao>01/04/2016</correcao>
+            <juros>01/04/2016</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>13,93</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/05/2016</data_referencia>
+            <correcao>01/05/2016</correcao>
+            <juros>01/05/2016</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>2234,90</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/06/2016</data_referencia>
+            <correcao>01/06/2016</correcao>
+            <juros>01/06/2016</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>40,86</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/02/2017</data_referencia>
+            <correcao>01/02/2017</correcao>
+            <juros>01/02/2017</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>1933,52</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/05/2017</data_referencia>
+            <correcao>01/05/2017</correcao>
+            <juros>01/05/2017</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>11,40</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/07/2017</data_referencia>
+            <correcao>01/07/2017</correcao>
+            <juros>01/07/2017</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>98,83</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/08/2017</data_referencia>
+            <correcao>01/08/2017</correcao>
+            <juros>01/08/2017</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>202,37</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/09/2017</data_referencia>
+            <correcao>01/09/2017</correcao>
+            <juros>01/09/2017</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>17,31</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/10/2017</data_referencia>
+            <correcao>01/10/2017</correcao>
+            <juros>01/10/2017</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>122,23</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/12/2017</data_referencia>
+            <correcao>01/12/2017</correcao>
+            <juros>01/12/2017</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>27,32</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/01/2018</data_referencia>
+            <correcao>01/01/2018</correcao>
+            <juros>01/01/2018</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>237,34</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/02/2018</data_referencia>
+            <correcao>01/02/2018</correcao>
+            <juros>01/02/2018</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>30,45</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/03/2018</data_referencia>
+            <correcao>01/03/2018</correcao>
+            <juros>01/03/2018</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>33,86</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/05/2018</data_referencia>
+            <correcao>01/05/2018</correcao>
+            <juros>01/05/2018</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>15,54</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/10/2019</data_referencia>
+            <correcao>01/10/2019</correcao>
+            <juros>01/10/2019</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>9,75</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/11/2019</data_referencia>
+            <correcao>01/11/2019</correcao>
+            <juros>01/11/2019</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>33,60</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/12/2019</data_referencia>
+            <correcao>01/12/2019</correcao>
+            <juros>01/12/2019</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>72,45</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/01/2020</data_referencia>
+            <correcao>01/01/2020</correcao>
+            <juros>01/01/2020</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>480,74</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/02/2020</data_referencia>
+            <correcao>01/02/2020</correcao>
+            <juros>01/02/2020</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>65,65</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/06/2020</data_referencia>
+            <correcao>01/06/2020</correcao>
+            <juros>01/06/2020</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>13,02</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/01/2021</data_referencia>
+            <correcao>01/01/2021</correcao>
+            <juros>01/01/2021</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>47,42</valor>
+            <multa>140</multa>
+         </referencia>
+         <referencia>
+            <natureza>ISSQN-RF85</natureza>
+            <data_referencia>01/02/2021</data_referencia>
+            <correcao>01/02/2021</correcao>
+            <juros>01/02/2021</juros>
+            <ref_selic>01/01/2022</ref_selic>
+            <md>7</md>
+            <valor>6,70</valor>
+            <multa>140</multa>
+         </referencia>
+      </lista_referencias>
+   </divida>
+      </lista_divida>
+   <gerente_bm>79.477-9</gerente_bm>
+   <gerente_nome>Yuri Max Barbosa Souto</gerente_nome>
+   <gerente_cargo>GERENTE 1. NIVEL DA DIVIDA ATIVA</gerente_cargo>
+   <numero_processo_judicial></numero_processo_judicial>
+   <data_ajuizamento></data_ajuizamento>
+</CDA>
+   </MessageBody>    </Message> 

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pesquisar Capital</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .flash-success {
+            color: green;
+            font-weight: bold;
+        }
+        .fade-out {
+            opacity: 0;
+        }
+        /* Estilo para os botões */
+        form {
+            display: inline; /* Garante que os formulários fiquem lado a lado */
+        }
+
+        button {
+            margin-left: 5px; /* Espaçamento entre os botões */
+            padding: 5px 10px; /* Tamanho dos botões */
+            cursor: pointer; /* Cursor de mão ao passar o mouse */
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Pesquisar Capital de um País</h2>
+    
+    <form action="{{ path('CapitalCity_request') }}" method="get">
+        <label for="country_code">Código ISO do País:</label>
+        <input type="text" id="country_code" name="country_code" placeholder="ex.: US, BR" required>
+        <button type="submit">Pesquisar</button>
+    </form>
+
+    {% if capitalCity is not null %}
+        <h2>País: {{ countryName }}</h2>
+        <h2>Capital: {{ capitalCity }}</h2>
+    {% endif %}
+    
+    <hr>
+    
+    <h2>Inserir País</h2>
+    <form action="{{ path('test_insert_form') }}" method="post">
+        <label for="country_code">Código ISO:</label>
+        <input type="text" id="country_code" name="country_code" required>
+        
+        <label for="country_name">Nome do País:</label>
+        <input type="text" id="country_name" name="country_name" required>
+        
+        <label for="capital_city">Capital:</label>
+        <input type="text" id="capital_city" name="capital_city" required>
+        
+        <button type="submit">Inserir País</button>
+    </form>
+    
+    <hr>
+
+    <h2>Países que já foram cadastrados no banco</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Código ISO</th>
+                <th>Nome do País</th>
+                <th>Capital</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for country in countryList %}
+                <tr>
+                    <td>{{country.countryCode}}</td>
+                    <td>{{country.countryName}}</td>
+                    <td>{{country.capitalCity}}</td>
+                    <td>
+                        <form action="{{ path('country_update', {'id': country.id}) }}" method="post" style="display:inline;">
+                            <input type="text" name="country_code" value="{{ country.countryCode }}" required>
+                            <input type="text" name="country_name" value="{{ country.countryName }}" required>
+                            <input type="text" name="capital_city" value="{{ country.capitalCity }}" required>
+                            <button type="submit">Atualizar</button>
+                        </form>
+                        <form action="{{ path('test_delete', {'id': country.id}) }}" method="post" style="display:inline;">
+                            <button type="submit" onclick="return confirm('Tem certeza que deseja excluir este país?');">Excluir</button>
+                        </form>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Nenhum país cadastrado.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    {% for message in app.flashes('success') %}
+        <div class="flash-success">{{ message }}</div>
+    {% endfor %}
+
+    <hr>
+    
+    <h2>Código ISO de alguns países que podem ser usados na pesquisa</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Código ISO</th>
+                <th>Nome do País</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for code, name in countries %}
+                <tr>
+                    <td>{{ code }}</td>
+                    <td>{{ name }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const successMessages = document.querySelectorAll('.flash-success');
+            successMessages.forEach(message => {
+                setTimeout(() => {
+                    message.classList.add('fade-out');
+                    setTimeout(() => {
+                        message.remove();
+                    }, 500); // Tempo para esperar o efeito de fade-out
+                }, 3000); // Tempo em milissegundos para a mensagem desaparecer
+            });
+        });
+    </script>
+</body>
+</html>
