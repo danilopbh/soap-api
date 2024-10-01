@@ -11,17 +11,6 @@ class EprocController extends AbstractController
 {
     #[Route('/eproc/consultarProcesso', name: 'consultarProcesso_request')]
     public function soapRequest(): Response {
-        // Caminho para o arquivo XML local
-        $xmlFilePath = $this->getParameter('kernel.project_dir') . '/PGM-soapui-project.xml';
-    
-        // Verifique se o arquivo existe
-        if (!file_exists($xmlFilePath)) {
-            return new Response('Arquivo XML não encontrado: ' . $xmlFilePath, Response::HTTP_NOT_FOUND);
-        }
-    
-        // Carregue o conteúdo do XML
-        $xmlContent = file_get_contents($xmlFilePath);
-    
         // Configurações de SSL e outras opções
         $options = [
             'stream_context' => stream_context_create([
@@ -33,43 +22,45 @@ class EprocController extends AbstractController
             'trace' => 1,
             'exceptions' => true,
         ];
-    
+
         try {
             // Criação do cliente SOAP
             $client = new \SoapClient(null, array_merge($options, [
                 'location' => 'https://eproc1g-hml.tjmg.jus.br/eproc/ws/controlador_ws.php?srv=intercomunicacao2.2',
-                'uri' => 'http://www.cnj.jus.br/servico-intercomunicacao-2.2.2/', // Ajuste conforme necessário
+                'uri' => 'http://www.cnj.jus.br/servico-intercomunicacao-2.2.2/',
             ]));
-    
-            // Parâmetros da chamada (baseados no XML)
-            // Aqui você pode precisar manipular o XML para extrair os dados que você quer enviar
-            $params = [
-                'idConsultante' => '18715383000140',
-                'senhaConsultante' => 'c2bc11b9315760e397f3068205186f4bae00aee103d80fe00fee79cf63a84782',
-                'numeroProcesso' => '10035746520248130024',
-                'dataReferencia' => '20240930170200',
-                'movimentos' => true,
-                'incluirCabecalho' => true,
-                'incluirDocumentos' => true,
-            ];
-    
-            // Você pode construir a requisição XML aqui se precisar
-            $xmlRequest = new SimpleXMLElement($xmlContent);
-            // Exemplo de como você poderia usar o SimpleXMLElement para construir a solicitação:
-            // $xmlRequest->someElement = $params['idConsultante'];
+
+            // Construindo a requisição XML
+            $xmlRequest = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?>
+            <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://www.cnj.jus.br/servico-intercomunicacao-2.2.2/" xmlns:tip="http://www.cnj.jus.br/tipos-servico-intercomunicacao-2.2.2/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                    <ser:consultarProcesso>
+                        <tip:idConsultante>18715383000140</tip:idConsultante>
+                        <tip:senhaConsultante>9d818354c16ce308b6d4a316bbc71d0ed782bad0cfc518168f4aaa414a52048e</tip:senhaConsultante>
+                        <tip:numeroProcesso>10035746520248130024</tip:numeroProcesso>
+                        <tip:dataReferencia>20241001093800</tip:dataReferencia>
+                        <tip:movimentos>true</tip:movimentos>
+                        <tip:incluirCabecalho>true</tip:incluirCabecalho>
+                        <tip:incluirDocumentos>true</tip:incluirDocumentos>
+                        <tip:documento>11727714103161426873969223318</tip:documento>
+                    </ser:consultarProcesso>
+                </soapenv:Body>
+            </soapenv:Envelope>');
+
+            // Enviando a requisição
+            $response = $client->__doRequest($xmlRequest->asXML(), 'https://eproc1g-hml.tjmg.jus.br/eproc/ws/controlador_ws.php?srv=intercomunicacao2.2', 'consultarProcesso', SOAP_1_1);
+
+            // Imprimindo a resposta para depuração
+            echo "Resposta XML:\n" . htmlspecialchars($response) . "\n";
+
+            // Processar a resposta
+            $responseXml = new SimpleXMLElement($response);
             
-            // Envie a requisição
-            $response = $client->__soapCall('consultarProcesso', [$params]);
-    
-            // Exibindo a requisição e resposta para depuração
-            echo "Request :\n" . $client->__getLastRequest() . "\n";
-            echo "Response:\n" . $client->__getLastResponse() . "\n";
-    
-            // Exibindo a resposta
-            return new Response('<pre>' . print_r($response, true) . '</pre>');
+            //Exibindo os dados em uma resposta
+            return new Response($responseXml);
         } catch (\SoapFault $fault) {
-            // Tratamento de erros SOAP
             return new Response('Erro SOAP: ' . $fault->getMessage());
         }
-    }     
+    }
 }
