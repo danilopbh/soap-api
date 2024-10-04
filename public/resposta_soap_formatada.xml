@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://www.cnj.jus.br/tipos-servico-intercomunicacao-2.2.2" xmlns:ns2="http://www.cnj.jus.br/intercomunicacao-2.2.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ns3="http://www.cnj.jus.br/servico-intercomunicacao-2.2.2/" xmlns:xmime="http://www.w3.org/2005/05/xmlmime">
+  <SOAP-ENV:Body>
+    <ns3:consultarProcessoResposta>
+      <ns1:sucesso>true</ns1:sucesso>
+      <ns1:mensagem>Consulta realizada com sucesso</ns1:mensagem>
+      <ns1:processo>
+        <ns2:dadosBasicos numero="10035746520248130024" competencia="752" classeProcessual="40" codigoLocalidade="0024" nivelSigilo="0" intervencaoMP="false" tamanhoProcesso="86870" dataAjuizamento="20240930133728">
+          <ns2:polo polo="AT">
+            <ns2:parte assistenciaJudiciaria="false">
+              <ns2:pessoa nome="SUPERMERCADOS BH" sexo="D" numeroDocumentoPrincipal="06135538001161" tipoPessoa="juridica">
+                <ns2:documento codigoDocumento="06135538001161" emissorDocumento="RFB" tipoDocumento="CMF"/>
+                <ns2:pessoaRelacionada xsi:nil="true"/>
+              </ns2:pessoa>
+            </ns2:parte>
+          </ns2:polo>
+          <ns2:polo polo="PA">
+            <ns2:parte assistenciaJudiciaria="false">
+              <ns2:pessoa nome="MUNICIPIO DE BELO HORIZONTE" sexo="D" numeroDocumentoPrincipal="18715383000140" tipoPessoa="juridica">
+                <ns2:documento codigoDocumento="18715383000140" emissorDocumento="RFB" tipoDocumento="CMF"/>
+                <ns2:pessoaRelacionada xsi:nil="true"/>
+              </ns2:pessoa>
+              <ns2:advogado nome="LARISSA MARIA VALOIS" numeroDocumentoPrincipal="11884168639" intimacao="true" tipoRepresentante="P">
+                <ns2:endereco cep="30140074">
+                  <ns2:logradouro>Rua dos Aimorés</ns2:logradouro>
+                  <ns2:numero>1862</ns2:numero>
+                  <ns2:complemento>apto 608</ns2:complemento>
+                  <ns2:bairro>Lourdes</ns2:bairro>
+                  <ns2:cidade>Belo Horizonte</ns2:cidade>
+                  <ns2:estado>MG</ns2:estado>
+                  <ns2:pais>BR</ns2:pais>
+                </ns2:endereco>
+              </ns2:advogado>
+            </ns2:parte>
+          </ns2:polo>
+          <ns2:assunto principal="true">
+            <ns2:codigoNacional>10394</ns2:codigoNacional>
+          </ns2:assunto>
+          <ns2:magistradoAtuante>01516314689</ns2:magistradoAtuante>
+          <ns2:outroParametro nome="rito" valor="2"/>
+          <ns2:outroParametro nome="ritoProcessual" valor="Ordinário"/>
+          <ns2:outroParametro nome="assuntoPrincipal"/>
+          <ns2:outroParametro nome="dataAutuacao" valor="20240930133728"/>
+          <ns2:outroParametro nome="situacao" valor="MOVIMENTO"/>
+          <ns2:outroParametro nome="chave" valor="305633447424"/>
+          <ns2:outroParametro nome="antecipacaoTutela" valor="Não Requerida"/>
+          <ns2:valorCausa>0</ns2:valorCausa>
+          <ns2:orgaoJulgador codigoOrgao="100240499" nomeOrgao="2ª Vara de Feitos Tributários do Município de Belo Horizonte" instancia="ORIG" codigoMunicipioIBGE="3106200"/>
+        </ns2:dadosBasicos>
+      </ns1:processo>
+    </ns3:consultarProcessoResposta>
+  </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
