@@ -639,3 +639,5 @@ a3e3ef,127.0.0.1,GET,https://localhost:8000/eproc/consultarProcesso,1728046291,,
 8490c4,127.0.0.1,GET,https://localhost:8000/eproc/consultarProcesso,1728046452,,200,request
 bd3018,127.0.0.1,GET,https://localhost:8000/eproc/consultarProcesso,1728047586,,200,request
 7167df,127.0.0.1,GET,https://localhost:8000/eproc/consultarProcesso,1728047637,,200,request
+007b9f,127.0.0.1,GET,https://localhost:8000/eproc/consultarProcesso,1728050360,,200,request
+884d53,127.0.0.1,GET,https://localhost:8000/eproc/consultarProcesso,1728050621,,200,request

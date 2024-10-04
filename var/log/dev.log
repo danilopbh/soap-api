@@ -2944,3 +2944,7 @@
 [2024-10-04T10:13:05.757354-03:00] security.DEBUG: Checking for authenticator support. {"firewall_name":"main","authenticators":0} []
 [2024-10-04T10:13:56.609077-03:00] request.INFO: Matched route "consultarProcesso_request". {"route":"consultarProcesso_request","route_parameters":{"_route":"consultarProcesso_request","_controller":"App\\Controller\\EprocController::soapRequest"},"request_uri":"https://localhost:8000/eproc/consultarProcesso","method":"GET"} []
 [2024-10-04T10:13:56.609577-03:00] security.DEBUG: Checking for authenticator support. {"firewall_name":"main","authenticators":0} []
+[2024-10-04T10:59:20.007316-03:00] request.INFO: Matched route "consultarProcesso_request". {"route":"consultarProcesso_request","route_parameters":{"_route":"consultarProcesso_request","_controller":"App\\Controller\\EprocController::soapRequest"},"request_uri":"https://localhost:8000/eproc/consultarProcesso","method":"GET"} []
+[2024-10-04T10:59:20.007758-03:00] security.DEBUG: Checking for authenticator support. {"firewall_name":"main","authenticators":0} []
+[2024-10-04T11:03:40.642283-03:00] request.INFO: Matched route "consultarProcesso_request". {"route":"consultarProcesso_request","route_parameters":{"_route":"consultarProcesso_request","_controller":"App\\Controller\\EprocController::soapRequest"},"request_uri":"https://localhost:8000/eproc/consultarProcesso","method":"GET"} []
+[2024-10-04T11:03:40.642697-03:00] security.DEBUG: Checking for authenticator support. {"firewall_name":"main","authenticators":0} []

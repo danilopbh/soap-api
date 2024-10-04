@@ -29,7 +29,10 @@ class EprocController extends AbstractController
                 'location' => 'https://eproc1g-hml.tjmg.jus.br/eproc/ws/controlador_ws.php?srv=intercomunicacao2.2',
                 'uri' => 'http://www.cnj.jus.br/servico-intercomunicacao-2.2.2/',
             ]));
-        
+            
+            //Senha gerada diariamente com criptografia SHA256
+            $senhaConsultante = 'cdeacda1f6153bf553f7f048d988f2eb95f946c0c4b0cb7b761692d85b9aed06';
+
             // Construindo a requisição XML
             $xmlRequest = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?>
             <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
@@ -39,7 +42,7 @@ class EprocController extends AbstractController
                 <soapenv:Body>
                     <ser:consultarProcesso>
                         <tip:idConsultante>18715383000140</tip:idConsultante>
-                        <tip:senhaConsultante>cdeacda1f6153bf553f7f048d988f2eb95f946c0c4b0cb7b761692d85b9aed06</tip:senhaConsultante>
+                        <tip:senhaConsultante>'.$senhaConsultante.'</tip:senhaConsultante>
                         <tip:numeroProcesso>10035746520248130024</tip:numeroProcesso>
                         <tip:dataReferencia>20241001093800</tip:dataReferencia>
                         <tip:movimentos>true</tip:movimentos>
