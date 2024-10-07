@@ -3,7 +3,7 @@
         'name' => '__root__',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '3f4d5d4362f74eeb2effe6b6c6da18beb9489ea6',
+        'reference' => 'd8e8ce6a9f0bdef8608e49e5f9320c7e2aeac83e',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         '__root__' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '3f4d5d4362f74eeb2effe6b6c6da18beb9489ea6',
+            'reference' => 'd8e8ce6a9f0bdef8608e49e5f9320c7e2aeac83e',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -155,9 +155,9 @@
             'dev_requirement' => false,
         ),
         'doctrine/sql-formatter' => array(
-            'pretty_version' => '1.4.1',
-            'version' => '1.4.1.0',
-            'reference' => '7f83911cc5eba870de7ebb11283972483f7e2891',
+            'pretty_version' => '1.5.0',
+            'version' => '1.5.0.0',
+            'reference' => '16ca9e39877369d664f06dacde468548298bdc40',
             'type' => 'library',
             'install_path' => __DIR__ . '/../doctrine/sql-formatter',
             'aliases' => array(),
@@ -421,8 +421,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '3.0.0',
-                1 => '1.0|2.0|3.0',
+                0 => '1.0|2.0|3.0',
+                1 => '3.0.0',
             ),
         ),
         'psr/simple-cache-implementation' => array(

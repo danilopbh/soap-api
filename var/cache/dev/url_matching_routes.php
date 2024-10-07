@@ -16,6 +16,8 @@ return [
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/CountryInfo/CapitalCity' => [[['_route' => 'CapitalCity_request', '_controller' => 'App\\Controller\\CountryInfoController::soapRequest'], null, null, null, false, false, null]],
         '/eproc/consultarProcesso' => [[['_route' => 'consultarProcesso_request', '_controller' => 'App\\Controller\\EprocController::soapRequest'], null, null, null, false, false, null]],
+        '/eproc/consultarAlteracao' => [[['_route' => 'consultarAlteracao_request', '_controller' => 'App\\Controller\\EprocController::soapRequestAlteracao'], null, null, null, false, false, null]],
+        '/eproc/teste' => [[['_route' => 'teste_request', '_controller' => 'App\\Controller\\EprocController::teste'], null, null, null, false, false, null]],
         '/siatu' => [[['_route' => 'siatu_request', '_controller' => 'App\\Controller\\SiatuController::soapRequest'], null, null, null, false, false, null]],
         '/soap' => [[['_route' => 'soap_request', '_controller' => 'App\\Controller\\SoapController::soapRequest'], null, null, null, false, false, null]],
         '/test/insert' => [[['_route' => 'test_insert', '_controller' => 'App\\Controller\\TestControllerCountryInfo::insert'], null, null, null, false, false, null]],
