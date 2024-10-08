@@ -2,16 +2,23 @@
 
 namespace App\Controller;
 
+use DateTime;
 use SimpleXMLElement;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-//use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Attribute\Route;
 
 class EprocController extends AbstractController
 {
+    protected $senhaConsultante;
+
+    public function __construct()
+    {
+        $this->senhaConsultante = '93875557dc4e27734eb632ddea19b8c61eb732ee2fa377d015ffb122a8866456';
+    }
+
     #[Route('/eproc/consultarProcesso', name: 'consultarProcesso_request')]
-    public function soapRequest(): Response
+    public function soapRequestProcesso(): Response
     {
         // Configurações de SSL e outras opções
         $options = [
@@ -32,9 +39,6 @@ class EprocController extends AbstractController
                 'uri' => 'http://www.cnj.jus.br/servico-intercomunicacao-2.2.2/',
             ]));
 
-            $senhaConsultante = '7af952d5c94ed5ed60154e3ca204cd431b5374518079405023990cfab1125732';
-
-
             // Construindo a requisição XML
             $xmlRequest = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?>
             <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
@@ -44,7 +48,7 @@ class EprocController extends AbstractController
                 <soapenv:Body>
                     <ser:consultarProcesso>
                         <tip:idConsultante>18715383000140</tip:idConsultante>
-                        <tip:senhaConsultante>'.$senhaConsultante.'</tip:senhaConsultante>
+                        <tip:senhaConsultante>' . $this->senhaConsultante . '</tip:senhaConsultante>
                         <tip:numeroProcesso>10035746520248130024</tip:numeroProcesso>
                         <tip:dataReferencia>20241001093800</tip:dataReferencia>
                         <tip:movimentos>true</tip:movimentos>
@@ -251,7 +255,8 @@ class EprocController extends AbstractController
     }
 
     #[Route('/eproc/consultarAlteracao', name: 'consultarAlteracao_request')]
-    public function soapRequestAlteracao(): Response {
+    public function soapRequestAlteracao(): Response
+    {
         // Configurações de SSL e outras opções
         $options = [
             'stream_context' => stream_context_create([
@@ -262,17 +267,15 @@ class EprocController extends AbstractController
             ]),
             'trace' => 1,
             'exceptions' => true,
-        ];    
-    
+        ];
+
         try {
             // Criação do cliente SOAP
             $client = new \SoapClient(null, array_merge($options, [
                 'location' => 'https://eproc1g-hml.tjmg.jus.br/eproc/ws/controlador_ws.php?srv=intercomunicacao2.2',
                 'uri' => 'http://www.cnj.jus.br/servico-intercomunicacao-2.2.2/',
             ]));
-    
-            $senhaConsultante = '7af952d5c94ed5ed60154e3ca204cd431b5374518079405023990cfab1125732';
-    
+
             // Construindo a requisição XML
             $xmlRequest = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?>
             <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
@@ -282,15 +285,15 @@ class EprocController extends AbstractController
                 <soapenv:Body>
                     <ser:consultarAlteracao>
                         <tip:idConsultante>18715383000140</tip:idConsultante>
-                        <tip:senhaConsultante>' . $senhaConsultante . '</tip:senhaConsultante>
+                        <tip:senhaConsultante>' . $this->senhaConsultante . '</tip:senhaConsultante>
                         <tip:numeroProcesso>10035746520248130024</tip:numeroProcesso>
                     </ser:consultarAlteracao>
                 </soapenv:Body>
             </soapenv:Envelope>');
-    
+
             // Enviando a requisição
             $responseXml = $client->__doRequest($xmlRequest->asXML(), 'https://eproc1g-hml.tjmg.jus.br/eproc/ws/controlador_ws.php?srv=intercomunicacao2.2', 'consultarAlteracao', SOAP_1_1);
-    
+
             // Carregando a resposta XML
             $response = simplexml_load_string($responseXml);
             if ($response === false) {
@@ -299,39 +302,265 @@ class EprocController extends AbstractController
                 }
                 return new Response('Erro ao carregar a resposta SOAP');
             }
-    
+
             // Verificando a resposta e acessando o corpo
             $body = $response->children('SOAP-ENV', true)->Body;
             $consultarAlteracaoResposta = $body->children('ns2', true)->consultarAlteracaoResposta;
-    
+
             if ($consultarAlteracaoResposta) {
                 $hashCabecalho = $consultarAlteracaoResposta->children('ns1', true)->hashCabecalho;
                 $hashMovimentacoes = $consultarAlteracaoResposta->children('ns1', true)->hashMovimentacoes;
                 $hashDocumentos = $consultarAlteracaoResposta->children('ns1', true)->hashDocumentos;
-    
+
                 // Retornando os valores
                 return new Response(
-                    '<h2>Alterações do processo</h2>' .
-                    '<table border="1">' .
+                    '<h2>Alterações no processo</h2>' .
+                        '<table border="1">' .
                         '<tr><th>Atributo</th><th>Valor</th></tr>' .
                         '<tr><td>Hash Cabeçalho</td><td>' . (string)$hashCabecalho . '</td></tr>' .
                         '<tr><td>Hash Movimentações</td><td>' . (string)$hashMovimentacoes . '</td></tr>' .
                         '<tr><td>Hash Documentos</td><td>' . (string)$hashDocumentos . '</td></tr>' .
-                    '</table>'
+                        '</table>'
                 );
             } else {
                 return new Response('Nenhuma alteração encontrada no processo.');
             }
-    
         } catch (\SoapFault $fault) {
             // Tratamento de erro SOAP
             return new Response('Erro SOAP: ' . $fault->getMessage());
         }
     }
-    
-    #[Route('/eproc/teste', name: 'teste_request')]
-    public function teste(): Response
+
+    #[Route('/eproc/consultarAvisosPendentes', name: 'consultarAvisosPendentes_request')]
+    public function soapRequestAvisosPendentes(): Response
     {
-        return new Response('Teste de rota funcionando!');
+        // Configurações de SSL e outras opções
+        $options = [
+            'stream_context' => stream_context_create([
+                'ssl' => [
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                ],
+            ]),
+            'trace' => 1,
+            'exceptions' => true,
+        ];
+
+        try {
+            // Criação do cliente SOAP
+            $client = new \SoapClient(null, array_merge($options, [
+                'location' => 'https://eproc1g-hml.tjmg.jus.br/eproc/ws/controlador_ws.php?srv=intercomunicacao2.2',
+                'uri' => 'http://www.cnj.jus.br/servico-intercomunicacao-2.2.2/',
+            ]));
+
+            // Construindo a requisição XML
+            $xmlRequest = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?>
+            <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+                              xmlns:ser="http://www.cnj.jus.br/servico-intercomunicacao-2.2.2/" 
+                              xmlns:tip="http://www.cnj.jus.br/tipos-servico-intercomunicacao-2.2.2/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                    <ser:consultarAvisosPendentes>
+                        <tip:idConsultante>18715383000140</tip:idConsultante>
+                        <tip:senhaConsultante>' . $this->senhaConsultante . '</tip:senhaConsultante>
+                        <tip:dataReferencia>20241001093800</tip:dataReferencia>
+                    </ser:consultarAvisosPendentes>
+                </soapenv:Body>
+            </soapenv:Envelope>');
+
+            // Enviando a requisição
+            $responseXml = $client->__doRequest($xmlRequest->asXML(), 'https://eproc1g-hml.tjmg.jus.br/eproc/ws/controlador_ws.php?srv=intercomunicacao2.2', 'consultarAvisosPendentes', SOAP_1_1);
+
+            // Carregando a resposta XML
+            $response = simplexml_load_string($responseXml);
+            if ($response === false) {
+                foreach (libxml_get_errors() as $error) {
+                    echo "\t", $error->message;
+                }
+                return new Response('Erro ao carregar a resposta SOAP');
+            }
+
+            // Verificando a resposta e acessando o corpo
+            $body = $response->children('SOAP-ENV', true)->Body;
+            $consultarAvisosPendentesResposta = $body->children('ns3', true)->consultarAvisosPendentesResposta;
+            $aviso = $body->xpath('//ns1:aviso')[0] ?? null;
+            $pessoa = $body->xpath('//ns1:aviso/ns2:destinatario/ns2:pessoa')[0] ?? null;
+            $processo = $body->xpath('//ns2:processo')[0] ?? null;
+            $orgaoJulgador = $body->xpath('//ns1:aviso/ns2:processo/ns2:orgaoJulgador')[0] ?? null;
+
+            if ($consultarAvisosPendentesResposta || $aviso || $pessoa || $processo || $orgaoJulgador) {
+                $mensagem = $consultarAvisosPendentesResposta->children('ns1', true)->mensagem;
+
+                // Remover as chaves e separar o conteúdo
+                $mensagemLimpa = str_replace(['{', '}'], '', $mensagem);
+                $partesMensagem = explode("'", $mensagemLimpa);
+
+                if (isset($partesMensagem[3])) {
+                    // Tenta criar o objeto DateTime
+                    $dataAtualizacao = DateTime::createFromFormat('YmdHis', $partesMensagem[3]);
+
+                    if ($dataAtualizacao !== false) {
+                        // Se for válido, formata a data
+                        $dataFormatada = $dataAtualizacao->format('d/m/Y H:i:s');
+                        echo '<span style="color: green; font-weight: bold;"> Consulta realizada com sucesso - Atualizado em: ' . $dataFormatada . '</span>';
+                    } else {
+                        // Se a data não estiver no formato correto
+                        echo 'Formato de data inválido.';
+                    }
+                } else {
+                    echo 'Mensagem não contém a data de atualização.';
+                }
+
+                $idAviso = (string)$aviso['idAviso'] ?? '';
+                $tipoComunicacao = (string)$aviso['tipoComunicacao'] ?? '';
+                $nome = (string)$pessoa['nome'] ?? '';
+                $numeroDocumentoPrincipal = (string)$pessoa['numeroDocumentoPrincipal'] ?? '';
+                $tipoPessoa = (string)$pessoa['tipoPessoa'] ?? '';
+                $numero = (string)$processo['numero'] ?? '';
+                $competencia = (string)$processo['competencia'] ?? '';
+                $classeProcessual = (string)$processo['classeProcessual'] ?? '';
+                $nivelSigilo = (string)$processo['nivelSigilo'] ?? '';
+                $intervencaoMP = (string)$processo['intervencaoMP'] ?? '';
+                $tamanhoProcesso = (string)$processo['tamanhoProcesso'] ?? '';
+                $dataAjuizamento = (string)$processo['dataAjuizamento'] ?? '';
+                $codigoOrgao = (string)$orgaoJulgador['codigoOrgao'] ?? '';
+                $nomeOrgao = (string)$orgaoJulgador['nomeOrgao'] ?? '';
+                $instancia = (string)$orgaoJulgador['instancia'] ?? '';
+                $codigoMunicipioIBGE = (string)$orgaoJulgador['codigoMunicipioIBGE'] ?? '';
+                $dataDisponibilizacao = $aviso->children('ns2', true)->dataDisponibilizacao;
+
+                echo '<h2>Avisos pendentes do processo</h2>';
+                echo '<table border="1">';
+                echo '<tr><th>Atributo</th><th>Valor</th></tr>';
+                echo '<tr><td>idAviso</td><td>' . $idAviso . '</td></tr>';
+                echo '<tr><td>tipoComunicação</td><td>' . $tipoComunicacao . '</td></tr>';
+                echo '<tr><td>nome</td><td>' . $nome . '</td></tr>';
+                echo '<tr><td>numeroDocumentoPrincipal</td><td>' . $numeroDocumentoPrincipal . '</td></tr>';
+                echo '<tr><td>tipoPessoa</td><td>' . $tipoPessoa . '</td></tr>';
+                echo '<tr><td>número do processo</td><td>' . $numero . '</td></tr>';
+                echo '<tr><td>competência</td><td>' . $competencia . '</td></tr>';
+                echo '<tr><td>classe processual</td><td>' . $classeProcessual . '</td></tr>';
+                echo '<tr><td>nível de sigílo</td><td>' . $nivelSigilo . '</td></tr>';
+                echo '<tr><td>intervenção do ministério público</td><td>' . $intervencaoMP . '</td></tr>';
+                echo '<tr><td>tamanho do processo</td><td>' . $tamanhoProcesso . '</td></tr>';
+                echo '<tr><td>data de ajuizamento</td><td>' . $dataAjuizamento . '</td></tr>';
+
+                // Outros parâmetros
+                foreach ($body->xpath('//ns1:aviso/ns2:processo/ns2:outroParametro') as $parametro) {
+                    $nomeParam = (string)$parametro['nome'] ?? '';
+                    $valorParam = (string)$parametro['valor'] ?? '';
+                    echo "<tr><td>$nomeParam</td><td>" . (!empty($valorParam) ? $valorParam : 'Não contém valor') . "</td></tr>";
+                }
+
+                echo '<tr><td>código do orgão julgador</td><td>' . $codigoOrgao . '</td></tr>';
+                echo '<tr><td>nome do orgão julgador</td><td>' . $nomeOrgao . '</td></tr>';
+                echo '<tr><td>instância</td><td>' . $instancia . '</td></tr>';
+                echo '<tr><td>código do municipio pelo IBGE</td><td>' . $codigoMunicipioIBGE . '</td></tr>';
+                echo '<tr><td>Data da disponibilização</td><td>' . (string)$dataDisponibilizacao . '</td></tr>';
+                echo '</table>';
+
+                // Retornando os valores
+                return new Response($consultarAvisosPendentesResposta);
+            } else {
+                return new Response('Não há avisos pendentes');
+            }
+        } catch (\SoapFault $fault) {
+            // Tratamento de erro SOAP
+            return new Response('Erro SOAP: ' . $fault->getMessage());
+        }
+    }
+
+    #[Route('/eproc/consultarTeorComunicacao', name: 'consultarTeorComunicacao_request')]
+    public function soapRequestTeorComunicacao(): Response
+    {
+        // Configurações de SSL e outras opções
+        $options = [
+            'stream_context' => stream_context_create([
+                'ssl' => [
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                ],
+            ]),
+            'trace' => 1,
+            'exceptions' => true,
+        ];
+
+        try{
+            // Criação do cliente SOAP
+            $client = new \SoapClient(null, array_merge($options, [
+                'location' => 'https://eproc1g-hml.tjmg.jus.br/eproc/ws/controlador_ws.php?srv=intercomunicacao2.2',
+                'uri' => 'http://www.cnj.jus.br/servico-intercomunicacao-2.2.2/',
+            ]));
+
+            // Construindo a requisição XML
+            $xmlRequest = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?>
+            <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" 
+                              xmlns:ser="http://www.cnj.jus.br/servico-intercomunicacao-2.2.2/" 
+                              xmlns:tip="http://www.cnj.jus.br/tipos-servico-intercomunicacao-2.2.2/">
+                <soapenv:Header/>
+                <soapenv:Body>
+                    <ser:consultarTeorComunicacao>
+                        <tip:idConsultante>18715383000140</tip:idConsultante>
+                        <tip:senhaConsultante>' . $this->senhaConsultante . '</tip:senhaConsultante>
+                        <tip:numeroProcesso>10035746520248130024</tip:numeroProcesso>
+                        <tip:identificadorAviso>202410020000030</tip:identificadorAviso>
+                    </ser:consultarTeorComunicacao>
+                </soapenv:Body>
+            </soapenv:Envelope>');
+
+            // Enviando a requisição
+            $responseXml = $client->__doRequest($xmlRequest->asXML(), 'https://eproc1g-hml.tjmg.jus.br/eproc/ws/controlador_ws.php?srv=intercomunicacao2.2', 'consultarTeorComunicacao', SOAP_1_1);
+
+            // Carregando a resposta XML
+            $response = simplexml_load_string($responseXml);
+            if ($response === false) {
+                foreach (libxml_get_errors() as $error) {
+                    echo "\t", $error->message;
+                }
+                return new Response('Erro ao carregar a resposta SOAP');
+            }
+
+            // Verificando a resposta e acessando o corpo
+            $body = $response->children('SOAP-ENV', true)->Body;
+            $consultarTeorComunicacaoResposta = $body->children('ns3', true)->consultarTeorComunicacaoResposta;
+            $comunicacao = $body->xpath('//ns1:comunicacao')[0] ?? null;
+            $pessoa = $body->xpath('//ns2:destinatario/ns2:pessoa')[0] ?? null;
+            $processo = $comunicacao->xpath('//ns2:processo')[0] ?? null;
+
+            if ($consultarTeorComunicacaoResposta || $comunicacao || $pessoa || $processo) {
+                $mensagem = $consultarTeorComunicacaoResposta->children('ns1', true)->mensagem;
+
+                $id = (string)$comunicacao['id'] ?? '';
+                $tipoComunicacao = (string)$comunicacao['tipoComunicacao'] ?? '';
+                $dataReferencia = (string)$comunicacao['dataReferencia'] ?? '';
+                $nivelSigilo = (string)$comunicacao['nivelSigilo'] ?? '';
+                $nome = (string)$pessoa['nome'] ?? '';
+                $numeroDocumentoPrincipal = (string)$pessoa['numeroDocumentoPrincipal'] ?? '';
+                $tipoPessoa = (string)$pessoa['tipoPessoa'] ?? '';
+                $numProcesso = (string)$processo ?? '';
+               
+                echo '<span style="color: green; font-weight: bold;">' . $mensagem . '</span>';
+                echo '<h2>Teor de comunicação do processo</h2>';
+                echo '<table border="1">';
+                echo '<tr><th>Atributo</th><th>Valor</th></tr>';
+                echo '<tr><td>id da comunicação</td><td>' . $id . '</td></tr>';
+                echo '<tr><td>tipoComunicação</td><td>' . $tipoComunicacao . '</td></tr>';
+                echo '<tr><td>dataReferencia</td><td>' . $dataReferencia . '</td></tr>';
+                echo '<tr><td>nivelSigilo</td><td>' . $nivelSigilo . '</td></tr>';
+                echo '<tr><td>nome</td><td>' . $nome . '</td></tr>';
+                echo '<tr><td>numeroDocumentoPrincipal</td><td>' . $numeroDocumentoPrincipal . '</td></tr>';
+                echo '<tr><td>tipoPessoa</td><td>' . $tipoPessoa . '</td></tr>';
+                echo '<tr><td>numProcesso</td><td>' . $numProcesso . '</td></tr>';
+                echo '</table>';
+
+                // Retornando os valores
+                return new Response($consultarTeorComunicacaoResposta);
+            } else {
+                return new Response('Não há teor de comunicação');
+            }
+        }catch(\SoapFault $fault) {
+            // Tratamento de erro SOAP
+            return new Response('Erro SOAP: ' . $fault->getMessage());
+        }
     }
 }
